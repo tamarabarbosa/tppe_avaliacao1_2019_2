@@ -14,16 +14,10 @@ public class Disciplina {
 
 	public Disciplina(String nome, String departamento, String codigo, int creditosTeoria, int creditosPratica,
 			int creditosExtensao, int creditosEstudos) throws DadosDisciplinaIncompletosException {
-		if (nome == null || codigo == null || creditosTeoria < 0 || creditosPratica < 0 || creditosExtensao < 0 || creditosEstudos < 0 ||
-			nome.equalsIgnoreCase("") || codigo.equalsIgnoreCase("")) {
-			StringBuilder builder = new StringBuilder(); 
-			builder.append("Dados informados para Disciplinas estão inválidos. ");
-			builder.append((nome == null || nome.equalsIgnoreCase("")) ? "Nome: " + nome : null);
-			builder.append((codigo == null || codigo.equalsIgnoreCase("")) ? "Codigo: " + nome : null);
-			builder.append((creditosTeoria < 0 ) ? "Creditos teoria: " + creditosTeoria : null);
-			builder.append((creditosPratica < 0) ? "Creditos pratica: " + creditosPratica : null);
-			builder.append((creditosExtensao < 0) ? "Creditos extensao: " + creditosExtensao : null);
-			builder.append((creditosEstudos < 0) ? "Creditos estudos: " + creditosEstudos : null);
+		if (atributosNulos(nome, codigo, creditosTeoria, creditosPratica, creditosExtensao, creditosEstudos)) {
+			StringBuilder builder = criaBuilder(); 
+			criaMensagemException(nome, codigo, creditosTeoria, creditosPratica, creditosExtensao, creditosEstudos,
+					builder);
 			throw new DadosDisciplinaIncompletosException(builder.toString());
 		}
 		this.nome = nome; 
@@ -33,6 +27,28 @@ public class Disciplina {
 		this.creditosPratica = creditosPratica; 
 		this.creditosExtensao = creditosExtensao; 
 		this.creditosEstudos = creditosEstudos;
+	}
+
+	private void criaMensagemException(String nome, String codigo, int creditosTeoria, int creditosPratica,
+			int creditosExtensao, int creditosEstudos, StringBuilder builder) {
+		builder.append("Dados informados para Disciplinas estão inválidos. ");
+		builder.append((nome == null || nome.equalsIgnoreCase("")) ? "Nome: " + nome : null);
+		builder.append((codigo == null || codigo.equalsIgnoreCase("")) ? "Codigo: " + nome : null);
+		builder.append((creditosTeoria < 0 ) ? "Creditos teoria: " + creditosTeoria : null);
+		builder.append((creditosPratica < 0) ? "Creditos pratica: " + creditosPratica : null);
+		builder.append((creditosExtensao < 0) ? "Creditos extensao: " + creditosExtensao : null);
+		builder.append((creditosEstudos < 0) ? "Creditos estudos: " + creditosEstudos : null);
+	}
+
+	private boolean atributosNulos(String nome, String codigo, int creditosTeoria, int creditosPratica,
+			int creditosExtensao, int creditosEstudos) {
+		return nome == null || codigo == null || creditosTeoria < 0 || creditosPratica < 0 || creditosExtensao < 0 || creditosEstudos < 0 ||
+			nome.equalsIgnoreCase("") || codigo.equalsIgnoreCase("");
+	}
+
+	private StringBuilder criaBuilder() {
+		StringBuilder builder = new StringBuilder();
+		return builder;
 	}
 
 	public static Disciplina obterDisciplina(String nome, String departamento, String codigo, int creditosTeoria,

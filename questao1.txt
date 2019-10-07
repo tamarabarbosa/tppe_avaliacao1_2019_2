@@ -1,0 +1,12 @@
+Questão 1: Responda cada um dos itens abaixo em um arquivo chamado questao1.txt. Ao terminar de responder a questão, crie um commit com a seguinte mensagem: "Questão 1". Valor 20 pontos - 5 pontos cada resposta.
+
+a) Diferencie interfaces públicas de interfaces publicadas e justifique por que interfaces publicadas não devem ser refatoradas.
+
+b) Qual a diferença entre os maus cheiros "Cirurgia com rifle" e "Mudanças divergentes". Responda informando claramente os princípios de projetos que estão sendo violados em cada um dos maus-cheiros.
+Crirurgia com rifle fere o acoplamento do código pois as alterações devem ser feitas em diversas classes. Já em mudanças divergentes o código não está coeso pois as alterações deverão ser feitas em diversos pontos da classe.
+
+c) Refatoração sempre leva a projetos mais eficientes em termo de desempenho. A afirmativa é verdadeira ou falsa? Justifique.
+A afirmativa é falsa. Uma refatoração é feita para tornar o código mais "entendível" o que pode sacrificar um pouco o desempenho em alguns casos.
+
+d) Como se tem a garantia de que uma refatoração teve sucesso?
+Com a suíte de testes confiável rodando após a refatoração.
